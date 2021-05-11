@@ -5,15 +5,15 @@
     </v-avatar>
     <h2>get-aComic!</h2>
     <nav>
-      <div>
+      <v-button>
         <v-icon aria-label="Search bar">mdi-magnify</v-icon>
-      </div>
-      <div>
+      </v-button>
+      <v-button>
         <v-icon aria-label="Your shopping basket">mdi-basket</v-icon>
-      </div>
+      </v-button>
     </nav>
     <div class="welcome-container">
-      <h1>Hello, Liberfly!</h1>
+      <h1>Hello!!</h1>
       <p>Here's the today offers.</p>
     </div>
   </div>

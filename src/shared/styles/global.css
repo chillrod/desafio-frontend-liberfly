@@ -4,6 +4,7 @@
   font-family: "Roboto-Slab";
   /* text */
   --primary: #000000;
+  --primaryHover: #1d1d1d;
   --secondary: #ebebeb;
 
   /* bg */
@@ -49,6 +50,7 @@ i {
 
 i:hover {
   transform: translateY(-5%);
+  color: var(--primaryHover);
 }
 
 button {
