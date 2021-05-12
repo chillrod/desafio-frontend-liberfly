@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <Header />
+    <div class="welcome-container">
+      <h1>Hello!!</h1>
+      <p>Here's the today offers.</p>
+    </div>
     <div class="product-container">
       <ProductList />
     </div>
@@ -9,20 +12,17 @@
 </template>
 
 <script>
-import Header from '../components/Header/Header.vue';
 import ProductList from '../components/Products/ProductList.vue';
 import HomeNavigator from '../components/HomeNavigator/HomeTabs.vue';
 
 export default {
   name: 'HomePage',
   components: {
-    Header,
     ProductList,
     HomeNavigator,
   },
   setup() {
     return {
-      Header,
       ProductList,
       HomeNavigator,
     };
@@ -34,5 +34,19 @@ export default {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(1fr, 3);
+  grid-template-rows: repeat(1fr, 3);
+}
+
+.welcome-container {
+  grid-row: 2;
+  grid-column: span 3;
+  justify-self: start;
+}
+.product-container {
+  grid-row: 3;
+  grid-column: span 3;
 }
 </style>

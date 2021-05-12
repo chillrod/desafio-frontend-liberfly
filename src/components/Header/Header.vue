@@ -1,34 +1,42 @@
 <template>
   <div class="container">
-    <v-avatar size="40" class="user-profile-container">
+    <v-avatar @click="setProfileOpen(!profileOpen)" size="40" class="user-profile-container">
       <v-img :src="userImg" alt="User Profile" aria-label="Photo of the user profile" />
     </v-avatar>
+    <div class="profile-menu-container"></div>
     <h2>get-aComic!</h2>
     <nav>
-      <v-button>
-        <v-icon aria-label="Search bar">mdi-magnify</v-icon>
-      </v-button>
-      <v-button>
+      <v-btn @click="setCartOpen(!cartOpen)">
         <v-icon aria-label="Your shopping basket">mdi-basket</v-icon>
-      </v-button>
+      </v-btn>
     </nav>
-    <div class="welcome-container">
-      <h1>Hello!!</h1>
-      <p>Here's the today offers.</p>
-    </div>
   </div>
 </template>
 
 <script>
-// import { ref } from 'vue';
+import useState from '../../shared/utils/useState';
 
 import userImg from '../../shared/assets/user.jpeg';
 
+import Cart from '../Cart/Cart.vue';
+import Profile from '../Profile/Profile.vue';
+
 export default {
   name: 'Header',
+  components: {},
+  props: ['cartRef, profileRef'],
   setup() {
+    const [cartOpen, setCartOpen] = useState(false);
+    const [profileOpen, setProfileOpen] = useState(false);
+
     return {
+      Cart,
+      Profile,
       userImg,
+      cartOpen,
+      setCartOpen,
+      profileOpen,
+      setProfileOpen,
     };
   },
 };
@@ -40,12 +48,19 @@ export default {
   grid-template-columns: repeat(1fr, 4);
   grid-template-columns: repeat(1fr, 3);
   grid-template-rows: 0.5fr, 0.5fr;
-  position: sticky;
 
   .user-profile-container {
     grid-column: span 1;
     grid-row: 2;
     justify-self: end;
+    cursor: pointer;
+  }
+
+  .profile-menu-container {
+    grid-row: 2;
+    justify-self: center;
+    position: relative;
+    left: -50%;
   }
 
   h2 {
@@ -58,18 +73,25 @@ export default {
   nav {
     grid-column: 4;
     grid-row: 2;
-
+    justify-self: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-self: center;
+
+    button {
+      background: var(--secondary);
+    }
+  }
+  .cart-container {
+    position: relative;
+    grid-row: 2;
+    grid-column: 3;
+    justify-self: end;
+    right: 0;
+    left: 50%;
   }
   i {
     font-size: var(--fmd);
-  }
-  .welcome-container {
-    grid-row: 3;
-    grid-column: span 2;
-    justify-self: center;
   }
 }
 </style>
