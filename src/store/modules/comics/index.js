@@ -3,11 +3,11 @@ import getters from './getters';
 import mutations from './mutations';
 import state from './state';
 
-const products = {
+const comics = {
   state,
   mutations,
   actions,
   getters,
 };
 
-export default products;
+export default comics;

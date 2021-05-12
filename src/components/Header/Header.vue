@@ -3,18 +3,37 @@
     <v-avatar size="40" class="user-profile-container">
       <v-img :src="userImg" alt="User Profile" aria-label="Photo of the user profile" />
     </v-avatar>
-    <h2>get-aComic!</h2>
+    <h2
+      v-motion
+      :initial="{ opacity: 0, scale: 0.9 }"
+      :enter="{ opacity: 1, scale: 1.2 }"
+      :delay="100"
+    >
+      get-aComic!
+    </h2>
+
     <nav>
-      <v-button>
-        <v-icon aria-label="Search bar">mdi-magnify</v-icon>
-      </v-button>
       <v-button>
         <v-icon aria-label="Your shopping basket">mdi-basket</v-icon>
       </v-button>
     </nav>
     <div class="welcome-container">
-      <h1>Hello!!</h1>
-      <p>Here's the today offers.</p>
+      <h1
+        v-motion
+        :initial="{ opacity: 0, scale: 0.9 }"
+        :enter="{ opacity: 1, scale: 1 }"
+        :delay="500"
+      >
+        Hello, Liberfly!
+      </h1>
+      <p
+        v-motion
+        :initial="{ opacity: 0, scale: 0.9 }"
+        :enter="{ opacity: 1, scale: 1 }"
+        :delay="850"
+      >
+        Here's the today offers...
+      </p>
     </div>
   </div>
 </template>
@@ -40,7 +59,6 @@ export default {
   grid-template-columns: repeat(1fr, 4);
   grid-template-columns: repeat(1fr, 3);
   grid-template-rows: 0.5fr, 0.5fr;
-  position: sticky;
 
   .user-profile-container {
     grid-column: span 1;
@@ -52,24 +70,31 @@ export default {
     grid-column: span 4;
     justify-self: center;
     color: var(--red);
-    font-size: var(--logo);
+    font-size: var(--fsm);
     padding-top: var(--sm);
   }
+
   nav {
     grid-column: 4;
     grid-row: 2;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-self: center;
   }
   i {
     font-size: var(--fmd);
   }
   .welcome-container {
+    padding-top: var(--sm);
     grid-row: 3;
     grid-column: span 2;
     justify-self: center;
+    align-self: end;
+
+    h1 {
+      font-size: var(--fmd);
+    }
+
+    p {
+      font-size: var(--fsm);
+    }
   }
 }
 </style>

@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 
+import { MotionPlugin } from '@vueuse/motion';
 import App from './components/app/App.vue';
 
 import router from './router';
@@ -12,5 +13,6 @@ const app = createApp(App);
 app.use(router);
 app.use(store);
 app.use(vuetify);
+app.use(MotionPlugin);
 
 app.mount('#app');

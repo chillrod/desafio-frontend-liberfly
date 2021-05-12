@@ -32,7 +32,10 @@ export default {
 
 <style lang="scss">
 .container {
-  max-width: 1200px;
   margin: 0 auto;
+}
+
+.product-container {
+  margin-top: 0.5em;
 }
 </style>

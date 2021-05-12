@@ -13,12 +13,8 @@ export default {
 
 <style lang="scss" scoped>
 div {
-  grid-column: 4;
-  grid-row: 2;
-
-  justify-self: end;
-  align-self: start;
-
+  position: relative;
+  top: -100%;
   width: 70px;
   height: 70px;
 

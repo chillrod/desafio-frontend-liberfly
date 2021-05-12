@@ -6,15 +6,11 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-
 export default {
   name: 'Home Navigator',
   setup() {
-    const tab = ref(null);
     const tabContent = ['Offers, Top Picks, Hot'];
     return {
-      tab,
       tabContent,
     };
   },
