@@ -1,53 +1,53 @@
 <template>
   <div class="container">
-    <v-avatar size="40" class="user-profile-container">
+    <v-avatar @click="setProfileOpen(!profileOpen)" size="40" class="user-profile-container">
       <v-img :src="userImg" alt="User Profile" aria-label="Photo of the user profile" />
     </v-avatar>
     <h2
+      @click="router.push('/')"
       v-motion
       :initial="{ opacity: 0, scale: 0.9 }"
-      :enter="{ opacity: 1, scale: 1.2 }"
+      :enter="{ opacity: 1, scale: 1.5 }"
       :delay="100"
     >
       get-aComic!
     </h2>
-
     <nav>
-      <v-button>
-        <v-icon aria-label="Your shopping basket">mdi-basket</v-icon>
-      </v-button>
+      <v-badge :content="cartItemsLength.toString()" :model-value="messages" color="red">
+        <v-btn @click="handleNavigate()">
+          <v-icon aria-label="Your shopping basket">mdi-basket</v-icon>
+        </v-btn>
+      </v-badge>
     </nav>
-    <div class="welcome-container">
-      <h1
-        v-motion
-        :initial="{ opacity: 0, scale: 0.9 }"
-        :enter="{ opacity: 1, scale: 1 }"
-        :delay="500"
-      >
-        Hello, Liberfly!
-      </h1>
-      <p
-        v-motion
-        :initial="{ opacity: 0, scale: 0.9 }"
-        :enter="{ opacity: 1, scale: 1 }"
-        :delay="850"
-      >
-        Here's the today offers...
-      </p>
-    </div>
   </div>
 </template>
 
 <script>
-// import { ref } from 'vue';
-
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 import userImg from '../../shared/assets/user.jpeg';
 
 export default {
   name: 'Header',
+  components: {},
+
   setup() {
+    const router = useRouter();
+    const store = useStore();
+
+    const cartItemsLength = computed(() => store.getters.get_cart_total);
+
+    const handleNavigate = () => {
+      if (!cartItemsLength.value) return;
+      router.push('/cartpage');
+    };
+
     return {
+      cartItemsLength,
       userImg,
+      router,
+      handleNavigate,
     };
   },
 };
@@ -57,13 +57,20 @@ export default {
 .container {
   display: grid;
   grid-template-columns: repeat(1fr, 4);
-  grid-template-columns: repeat(1fr, 3);
   grid-template-rows: 0.5fr, 0.5fr;
 
   .user-profile-container {
-    grid-column: span 1;
+    grid-column: 1;
     grid-row: 2;
-    justify-self: end;
+    justify-self: center;
+    cursor: pointer;
+  }
+
+  .profile-menu-container {
+    grid-row: 2;
+    justify-self: center;
+    position: relative;
+    left: -50%;
   }
 
   h2 {
@@ -72,29 +79,22 @@ export default {
     color: var(--red);
     font-size: var(--fsm);
     padding-top: var(--sm);
+    cursor: pointer;
   }
 
   nav {
     grid-column: 4;
     grid-row: 2;
+    justify-self: center;
+    align-self: center;
+
+    button {
+      background: var(--secondary);
+    }
   }
   i {
     font-size: var(--fmd);
-  }
-  .welcome-container {
-    padding-top: var(--sm);
-    grid-row: 3;
-    grid-column: span 2;
-    justify-self: center;
-    align-self: end;
-
-    h1 {
-      font-size: var(--fmd);
-    }
-
-    p {
-      font-size: var(--fsm);
-    }
+    color: var(--primary);
   }
 }
 </style>
