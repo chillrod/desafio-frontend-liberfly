@@ -3,29 +3,41 @@
 O Projeto consiste na ideia de um modelo de assinatura para quadrinhos,
 se baseando em interfaces de streaming.
 
+## Para rodar o projeto:
+
+Antes de iniciar o projeto é preciso instalar os pacotes de dependências.
+
+```bash
+Abra o terminal na pasta root do projeto e rode o comando
+yarn
+ou
+npm install
+```
+
+#### Após instalados
+
+```bash
+Abra o terminal na pasta root do projeto e rode o comando
+yarn serve
+ou
+npm run serve
+
+O projeto será iniciliazado na porta 8080 do localhost
+
+localhost:8080
+```
+
 ## Tecnologias utilizadas:
+
+Axios => Marvel API,
 
 Vue 3.0,
 
-Vuetify 3 alpha
+Vuetify 3 alpha,
 
-Vuex 4
+Vuex 4,
 
 Vue Router
-
-Axios => Marvel API;
-
-```bash
-Antes de iniciar o projeto =>
-yarn
-```
-
-```bash
-Para rodar o projeto, após instalados os pacotes de dependências, basta rodar;
-yarn serve
-```
-
-##### O projeto será aberto na porta 8080
 
 ## Funcionalidades
 
