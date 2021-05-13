@@ -20,6 +20,13 @@ Antes de iniciar o projeto =>
 yarn
 ```
 
+```bash
+Para rodar o projeto, após instalados os pacotes de dependências, basta rodar;
+yarn serve
+```
+
+##### O projeto será aberto na porta 8080
+
 ## Funcionalidades
 
 Animações com a lib @vueuse/motion
