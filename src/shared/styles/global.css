@@ -2,7 +2,7 @@
   /* text */
   --primary: #e8e6e3;
   --primaryHover: #d6d2cd;
-  --secondary: #ebebeb;
+  --secondary: #26282a;
 
   /* bg */
   --background: #dddddd;
@@ -23,6 +23,7 @@
   --md: 2em;
 
   /* font-size */
+  --placeholder: 0.9rem;
   --logo: 1.3rem;
   --fsm: 1.2rem;
   --fm: 1.5rem;

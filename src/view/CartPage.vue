@@ -7,7 +7,7 @@
         :enter="{ opacity: 1, scale: 1 }"
         :delay="500"
       >
-        Hello, Liberfly!
+        Complete your order!
       </h1>
       <p
         v-motion
@@ -15,32 +15,32 @@
         :enter="{ opacity: 1, scale: 1 }"
         :delay="850"
       >
-        Here's the today offers...
+        Here's your order details.
       </p>
     </div>
-    <div class="product-container">
-      <ProductList />
+    <div class="cart-container">
+      <CartList />
     </div>
   </div>
 </template>
 
 <script>
-import ProductList from '../components/Products/ProductList.vue';
+import CartList from '../components/CartList/CartList.vue';
 
 export default {
-  name: 'HomePage',
+  name: 'CartPage',
   components: {
-    ProductList,
+    CartList,
   },
   setup() {
     return {
-      ProductList,
+      CartList,
     };
   },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .container {
   margin: 0 auto;
   display: grid;
@@ -49,16 +49,17 @@ export default {
 }
 
 .welcome-container {
+  margin-left: var(--sm);
   grid-row: 2;
-  grid-column: span 3;
-  justify-self: center;
+  grid-column: span 2;
+  justify-self: end;
 }
-.product-container {
+.cart-container {
   grid-row: 3;
   grid-column: span 3;
 }
 
-.product-container {
+.cart-container {
   margin-top: 0.5em;
 }
 </style>

@@ -1,11 +1,13 @@
+import actions from './actions';
+import getters from './getters';
+import mutations from './mutations';
+import state from './state';
+
 const cart = {
-  actions: {},
-  getters: {},
-  mutations: {},
-  state: {
-    cart: [],
-    discount: false,
-  },
+  state,
+  mutations,
+  actions,
+  getters,
 };
 
 export default cart;

@@ -13,8 +13,8 @@
           </div>
           <p>{{ comic.title }}</p>
           <div class="span-price-container">
-            <span>$ 29,90</span>
-            <button>
+            <span>${{ comic.cartPrice }},00</span>
+            <button @click="handleBuy(comic)">
               <v-icon>mdi-cart</v-icon>
             </button>
           </div>
@@ -31,18 +31,25 @@ import { useStore } from 'vuex';
 import RareBadge from './RareBadge.vue';
 
 export default {
+  name: 'ProductList',
   components: {
     'rare-badge': RareBadge,
   },
   setup() {
     const store = useStore();
-    const comics = computed(() => store.getters.comics);
+    const comics = computed(() => store.getters.comic_items);
+
+    const handleBuy = (value) => {
+      store.dispatch('handleSelectedComic', value);
+    };
 
     onMounted(() => {
       store.dispatch('getComics');
     });
     return {
       comics,
+      console,
+      handleBuy,
     };
   },
 };

@@ -1,9 +1,6 @@
 const getters = {
-  comics(state) {
+  comic_items(state) {
     return state.comics;
-  },
-  isRare(state) {
-    return state.isRare;
   },
 };
 
