@@ -1,45 +1,47 @@
 <template>
-  <ul>
-    <li v-for="(cartItem, id) in cartItems" :key="id">
-      <div class="cart-container">
-        <div class="cart-image-container">
-          <img
-            :src="`${cartItem.thumbnail.path}.${cartItem.thumbnail.extension}`"
-            alt="Comic books!"
-            aria-label="Image of the comics of our website."
-          />
+  <div class="container">
+    <ul>
+      <li v-for="(cartItem, id) in cartItems" :key="id">
+        <div class="cart-container">
+          <div class="cart-image-container">
+            <img
+              :src="`${cartItem.thumbnail.path}.${cartItem.thumbnail.extension}`"
+              alt="Comic books!"
+              aria-label="Image of the comics of our website."
+            />
+          </div>
+          <p>{{ cartItem.title }}</p>
+          <div class="span-price-container">
+            <span>${{ cartItem.cartPrice }},00</span>
+            <button @click="handleDeleteCartItem(cartItem)">
+              <v-icon>mdi-delete</v-icon>
+            </button>
+          </div>
         </div>
-        <p>{{ cartItem.title }}</p>
-        <div class="span-price-container">
-          <span>${{ cartItem.cartPrice }},00</span>
-          <button @click="handleDeleteCartItem(cartItem)">
-            <v-icon>mdi-cart</v-icon>
-          </button>
-        </div>
+      </li>
+    </ul>
+    <div class="checkout-container">
+      <div>
+        <p>Subtotal:</p>
+        <span>$ {{ sumOfCartSubtotal() }}</span>
       </div>
-    </li>
-  </ul>
-  <div class="checkout-container">
-    <div>
-      <p>Subtotal:</p>
-      <span>$ {{ sumOfCartSubtotal() }}</span>
+      <div>
+        <p>Desconto:</p>
+        <span>$ {{ sumOfCartSubtotal() }}</span>
+      </div>
+      <div>
+        <p>Total:</p>
+        <span>$ {{ sumOfCartSubtotal() }}</span>
+      </div>
     </div>
-    <div>
-      <p>Desconto:</p>
-      <span>$ {{ sumOfCartSubtotal() }}</span>
+    <div class="discount-input">
+      <form action="submit" @submit="handleSubmitForm">
+        <label for="discount">Discount Coupon:</label>
+        <button type="submit">Validate</button>
+        <input type="text" v-model="coupom" name="coupom" id="discount" placeholder="hey" />
+      </form>
+      <button class="order-btn">ORDER</button>
     </div>
-    <div>
-      <p>Total:</p>
-      <span>$ {{ sumOfCartSubtotal() }}</span>
-    </div>
-  </div>
-  <div class="discount-input">
-    <form action="submit">
-      <label for="discount">Discount Coupon:</label>
-      <button @click="handleSubmitDiscount">Validate</button>
-      <input type="text" name="text" id="discount" placeholder="hey" />
-    </form>
-    <button class="order-btn">ORDER</button>
   </div>
 </template>
 
@@ -66,14 +68,13 @@ export default {
       return sum;
     };
 
-    const handleSubmitDiscount = (event) => {
-      event.preventDefault();
-      store.dispatch('validateDiscount', event.target.value);
+    const handleSubmitForm = (e) => {
+      e.preventDefault();
     };
 
     return {
+      handleSubmitForm,
       handleDeleteCartItem,
-      handleSubmitDiscount,
       sumOfCartSubtotal,
       cartItems,
     };
@@ -82,9 +83,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.container {
+  @media (min-width: 600px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
 ul {
   max-height: 55vh;
   overflow-y: auto;
+
+  @media (min-width: 600px) {
+    grid-column: 1;
+  }
 }
 li {
   list-style-type: none;
@@ -152,6 +164,10 @@ li {
     flex-direction: column;
     padding: var(--sm);
 
+    @media (min-width: 600px) {
+      grid-column: 2;
+    }
+
     div {
       display: flex;
       justify-content: space-between;
@@ -162,6 +178,9 @@ li {
   .discount-input {
     display: flex;
     flex-direction: column;
+    @media (min-width: 600px) {
+      grid-column: 2;
+    }
 
     .order-btn {
       background: var(--red);

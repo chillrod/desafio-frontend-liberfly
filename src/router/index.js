@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../view/Home.vue';
 import CartPage from '../view/CartPage.vue';
+import ProfilePage from '../view/ProfileSettings.vue';
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/cartpage',
     name: 'CartPage',
     component: CartPage,
+  },
+  {
+    path: '/profile',
+    name: 'ProfilePage',
+    component: ProfilePage,
   },
 ];
 

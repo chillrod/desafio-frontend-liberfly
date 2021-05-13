@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <v-avatar @click="setProfileOpen(!profileOpen)" size="40" class="user-profile-container">
+    <v-avatar @click="router.push('/profile')" size="40" class="user-profile-container">
       <v-img :src="userImg" alt="User Profile" aria-label="Photo of the user profile" />
     </v-avatar>
     <h2

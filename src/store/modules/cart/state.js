@@ -1,7 +1,7 @@
 const state = {
   cart: [],
-  discount: false,
-  cartEmpty: false,
+  coupons: [],
+  coupomDetails: {},
 };
 
 export default state;

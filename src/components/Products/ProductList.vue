@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, getCurrentInstance } from 'vue';
 import { useStore } from 'vuex';
 
 import RareBadge from './RareBadge.vue';
@@ -37,10 +37,14 @@ export default {
   },
   setup() {
     const store = useStore();
+    const { $toast } = getCurrentInstance().ctx;
     const comics = computed(() => store.getters.comic_items);
 
     const handleBuy = (value) => {
-      store.dispatch('handleSelectedComic', value);
+      setTimeout(() => {
+        store.dispatch('handleSelectedComic', value);
+        $toast.show('Product Added');
+      }, 500);
     };
 
     onMounted(() => {

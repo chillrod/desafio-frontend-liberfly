@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
+    "@meforma/vue-toaster": "^1.2.2",
     "@vueuse/motion": "^1.5.5",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",

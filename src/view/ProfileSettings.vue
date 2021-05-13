@@ -7,7 +7,7 @@
         :enter="{ opacity: 1, scale: 1 }"
         :delay="500"
       >
-        Complete your order!
+        Your profile Details...
       </h1>
       <p
         v-motion
@@ -15,26 +15,26 @@
         :enter="{ opacity: 1, scale: 1 }"
         :delay="850"
       >
-        Here's your order details.
+        You have new coupons.
       </p>
     </div>
-    <div class="cart-container">
-      <CartList />
+    <div class="profile-container">
+      <Profile />
     </div>
   </div>
 </template>
 
 <script>
-import CartList from '../components/CartList/CartList.vue';
+import Profile from '../components/Profile/Profile.vue';
 
 export default {
-  name: 'CartPage',
+  name: 'ProfilePage',
   components: {
-    CartList,
+    Profile,
   },
   setup() {
     return {
-      CartList,
+      Profile,
     };
   },
 };
@@ -50,16 +50,16 @@ export default {
 
 .welcome-container {
   margin-left: var(--sm);
-  grid-row: 2;
+  grid-row: 1;
   grid-column: span 2;
   justify-self: start;
 }
-.cart-container {
+.profile-container {
   grid-row: 3;
   grid-column: span 3;
 }
 
-.cart-container {
+.profile-container {
   margin-top: 0.5em;
 }
 </style>

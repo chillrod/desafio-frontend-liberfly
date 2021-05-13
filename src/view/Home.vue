@@ -7,7 +7,7 @@
         :enter="{ opacity: 1, scale: 1 }"
         :delay="500"
       >
-        Hello, Liberfly!
+        Hello, Rodrigo!
       </h1>
       <p
         v-motion
