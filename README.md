@@ -28,6 +28,8 @@ Conceitos de mutations, actions, getters Vuex.
 
 ## Layout no FRAMER
 
+##### no qual eu não segui corretamente no css..... 😹
+
 [Link](https://framer.com/projects/9exeWm73rlWf0udlzqeb-dXsxP)
 
 ### Obs:
