@@ -19,22 +19,22 @@
       </p>
     </div>
     <div class="cart-container">
-      <CartList />
+      <Checkout />
     </div>
   </div>
 </template>
 
 <script>
-import CartList from '../components/CartList/CartList.vue';
+import Checkout from '../components/Checkout/Checkout.vue';
 
 export default {
   name: 'CartPage',
   components: {
-    CartList,
+    Checkout,
   },
   setup() {
     return {
-      CartList,
+      Checkout,
     };
   },
 };
@@ -53,6 +53,14 @@ export default {
   grid-row: 2;
   grid-column: span 2;
   justify-self: start;
+
+  h1 {
+    font-size: var(--fmd);
+  }
+
+  p {
+    font-size: var(--fsm);
+  }
 }
 .cart-container {
   grid-row: 3;

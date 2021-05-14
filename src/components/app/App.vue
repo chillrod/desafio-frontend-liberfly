@@ -29,9 +29,13 @@ export default {
 
 <style lang="scss">
 .header-container {
-  margin-bottom: 2em;
+  margin-bottom: var(--sm);
 }
 .container {
-  width: 95%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  width: 98%;
 }
 </style>

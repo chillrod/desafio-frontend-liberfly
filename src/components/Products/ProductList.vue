@@ -1,6 +1,12 @@
 <template>
   <div class="container">
-    <ul>
+    <div class="loading" v-if="loading">
+      <span>Loading...</span>
+      <div class="loading-icon">
+        <v-icon>mdi-loading</v-icon>
+      </div>
+    </div>
+    <ul v-if="!loading">
       <li v-for="(comic, id) in comics" :key="id" v-motion-slide-right>
         <div class="comic-container">
           <div class="comic-image-container">
@@ -25,8 +31,9 @@
 </template>
 
 <script>
-import { computed, onMounted, getCurrentInstance } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
 import RareBadge from './RareBadge.vue';
 
@@ -37,13 +44,14 @@ export default {
   },
   setup() {
     const store = useStore();
-    const { $toast } = getCurrentInstance().ctx;
+    const router = useRouter();
     const comics = computed(() => store.getters.comic_items);
+    const loading = computed(() => store.getters.loading);
 
     const handleBuy = (value) => {
       setTimeout(() => {
-        store.dispatch('handleSelectedComic', value);
-        $toast.show('Product Added');
+        store.dispatch('handleSingleProduct', value);
+        router.push('/product');
       }, 500);
     };
 
@@ -54,6 +62,7 @@ export default {
       comics,
       console,
       handleBuy,
+      loading,
     };
   },
 };
@@ -63,6 +72,30 @@ export default {
 .container {
   display: grid;
   grid-template-columns: 10% 1fr 10%;
+}
+.loading {
+  margin: 0 auto;
+  align-items: center;
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+
+  font-size: var(--fmd);
+
+  .loading-icon {
+    i {
+      animation: spin 1s infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
 }
 ul {
   display: flex;
@@ -79,14 +112,16 @@ ul {
 
     .comic-container {
       padding: var(--sm) 0;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
       display: grid;
     }
 
     .comic-image-container {
       grid-column: span 2;
       grid-row: 1;
-      width: 200px;
-      height: 200px;
+      width: 180px;
+      height: 230px;
       margin-bottom: var(--sm);
 
       img {
@@ -135,9 +170,12 @@ ul {
         transition: transform 150ms ease;
 
         &:hover {
-          background: var(--redHover);
           transform: translateY(-5%);
         }
+      }
+
+      i {
+        color: var(--primary);
       }
     }
   }

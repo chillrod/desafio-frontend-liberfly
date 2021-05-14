@@ -12,8 +12,24 @@ const actions = {
     ctx.commit('set_cart_items', payload);
   },
 
+  handleCoupom(ctx, payload) {
+    console.log({ payload });
+    setTimeout(() => {
+      ctx.commit('set_coupom', payload);
+      ctx.commit('set_coupom_applied');
+    }, 700);
+  },
+
+  handleSingleProduct(ctx, payload) {
+    console.log({ payload });
+    ctx.commit('set_cart_item', payload);
+  },
+
   deleteSelectedComic(ctx, payload) {
     ctx.commit('delete_cart_item', payload);
+  },
+  resetCartItems(ctx, payload) {
+    ctx.commit('reset_cart_items', payload);
   },
 };
 

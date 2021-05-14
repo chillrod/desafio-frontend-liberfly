@@ -32,6 +32,7 @@ const actions = {
       };
 
       ctx.commit('set_comit_list', { ...setRareComics(results) });
+      ctx.commit('set_loading_done', false);
     } catch (err) {
       console.log({ err });
     }

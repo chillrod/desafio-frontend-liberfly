@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, getCurrentInstance } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import userImg from '../../shared/assets/user.jpeg';
@@ -38,8 +38,13 @@ export default {
 
     const cartItemsLength = computed(() => store.getters.get_cart_total);
 
+    const { $toast } = getCurrentInstance().ctx;
+
     const handleNavigate = () => {
-      if (!cartItemsLength.value) return;
+      if (!cartItemsLength.value) {
+        $toast.show('Your cart is empty.');
+        return;
+      }
       router.push('/cartpage');
     };
 
@@ -89,12 +94,12 @@ export default {
     align-self: center;
 
     button {
-      background: var(--secondary);
+      background: var(--primary);
     }
   }
   i {
     font-size: var(--fmd);
-    color: var(--primary);
+    color: var(--secondary);
   }
 }
 </style>

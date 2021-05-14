@@ -53,6 +53,14 @@ export default {
   grid-row: 1;
   grid-column: span 2;
   justify-self: start;
+
+  h1 {
+    font-size: var(--fmd);
+  }
+
+  p {
+    font-size: var(--fsm);
+  }
 }
 .profile-container {
   grid-row: 3;

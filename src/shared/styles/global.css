@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+
 :root {
   /* text */
   --primary: #e8e6e3;
@@ -6,7 +8,7 @@
 
   /* bg */
   --background: #dddddd;
-  --pageBackground: #131516;
+  --pageBackground: white;
 
   /* btn */
   --red: #ef1515;
@@ -25,23 +27,32 @@
   /* font-size */
   --placeholder: 0.9rem;
   --logo: 1.3rem;
-  --fsm: 1.2rem;
+  --fsm: 1.1rem;
   --fm: 1.5rem;
-  --fmd: 2.5rem;
+  --fmd: 2.2rem;
+}
+
+.v-application ul {
+  padding: 0 !important;
+}
+
+.v-application {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-family: "Roboto Slab", serif;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
   box-sizing: border-box;
 
   font-size: 16px;
-  overflow: auto;
   background: var(--pageBackground);
 }
 
 i {
-  color: var(--primary);
   cursor: pointer;
 }
 
