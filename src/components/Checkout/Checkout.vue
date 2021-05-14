@@ -132,7 +132,6 @@ export default {
 
     const handleFinalizeOrder = () => {
       if (!cartItemLength.value) {
-        console.log({ cartItems: cartItemLength.value });
         router.push('/');
         return;
       }

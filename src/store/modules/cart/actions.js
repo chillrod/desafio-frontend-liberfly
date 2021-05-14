@@ -13,7 +13,6 @@ const actions = {
   },
 
   handleCoupom(ctx, payload) {
-    console.log({ payload });
     setTimeout(() => {
       ctx.commit('set_coupom', payload);
       ctx.commit('set_coupom_applied');
@@ -21,7 +20,6 @@ const actions = {
   },
 
   handleSingleProduct(ctx, payload) {
-    console.log({ payload });
     ctx.commit('set_cart_item', payload);
   },
 

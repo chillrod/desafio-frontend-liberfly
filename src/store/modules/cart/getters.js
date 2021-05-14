@@ -12,7 +12,6 @@ const getters = {
     return state.coupomApplied;
   },
   get_cart_total(state) {
-    console.log(state);
     return state.cart.length;
   },
   get_single_product(state) {
